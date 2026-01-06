@@ -1,14 +1,11 @@
 shader_type canvas_item;
 
-// --- Settings ---
+// --- Uniforms (Settings you see in the Inspector) ---
 uniform vec4 line_color : source_color = vec4(1.0, 1.0, 1.0, 1.0); // White outline by default
 uniform float line_thickness : hint_range(0.0, 10.0) = 1.0; // How thick the line is in pixels
 
 void fragment() {
-    // Calculate the offset size based on the texture's pixel size and desired thickness
     vec2 size = TEXTURE_PIXEL_SIZE * line_thickness;
-
-    // Sample the alpha (transparency) of 8 surrounding neighbors (N, S, E, W, and diagonals)
     float outline = texture(TEXTURE, UV + vec2(-size.x, 0)).a;   // Left
     outline += texture(TEXTURE, UV + vec2(0, size.y)).a;         // Down
     outline += texture(TEXTURE, UV + vec2(size.x, 0)).a;         // Right

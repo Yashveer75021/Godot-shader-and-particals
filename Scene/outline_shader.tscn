@@ -4,7 +4,7 @@
 [ext_resource type="Shader" uid="uid://bh73nb0fhuv24" path="res://Shaders/outline_shader.gdshader" id="1_n8x7v"]
 [ext_resource type="Texture2D" uid="uid://38ahy4kyq70b" path="res://Asset/models/charge.png" id="2_pikwg"]
 [ext_resource type="Texture2D" uid="uid://c54po801ld0gf" path="res://Asset/models/attack.png" id="3_ofms0"]
-[ext_resource type="Script" uid="uid://dfpgxn8vbh6hd" path="res://Script/outline_shader.gd" id="5_ofms0"]
+[ext_resource type="Script" uid="uid://dfpgxn8vbh6hd" path="res://Script/For-showcase-purpoes-only'/outline_activater.gd" id="5_ofms0"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_n8x7v"]
 shader = ExtResource("1_n8x7v")

@@ -1,8 +1,10 @@
 shader_type canvas_item;
 
+// --- Uniforms (Settings you see in the Inspector) ---
+
 void fragment() {
 	// Called for every pixel the material is visible on.
-	
+
 }
 
 //void light() {

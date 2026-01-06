@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://sacmwcuygn86" path="res://Asset/models/idle.png" id="1_5xq0d"]
 [ext_resource type="Shader" uid="uid://bhorl4wjsv7li" path="res://Shaders/desolve_shader.gdshader" id="1_at83e"]
-[ext_resource type="Script" uid="uid://dn178353vcuxm" path="res://Script/desolve_activater.gd" id="3_l0blw"]
+[ext_resource type="Script" uid="uid://dn178353vcuxm" path="res://Script/For-showcase-purpoes-only'/desolve_activater.gd" id="3_l0blw"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_at83e"]
 frequency = 0.0134

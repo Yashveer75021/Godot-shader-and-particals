@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dl2urqr6juoer"]
+[gd_scene load_steps=12 format=3 uid="uid://dl2urqr6juoer"]
 
 [ext_resource type="PackedScene" uid="uid://d0ioy2jkpnnp5" path="res://Scene/museum.tscn" id="1_mhtsl"]
 [ext_resource type="Texture2D" uid="uid://neinoeceklkf" path="res://Asset/background/forest-layer-backcolor.png" id="1_thj8p"]
@@ -9,62 +9,68 @@
 [ext_resource type="PackedScene" uid="uid://ds4t0ucs2ue4b" path="res://Scene/outline_shader.tscn" id="4_thj8p"]
 [ext_resource type="Texture2D" uid="uid://brgakt7uphpqm" path="res://Asset/background/forest-layer-1.png" id="4_twwsd"]
 [ext_resource type="PackedScene" uid="uid://r4pms1cu8ffn" path="res://Scene/scanline_shader.tscn" id="5_h8jt7"]
+[ext_resource type="PackedScene" uid="uid://dtrkjheb2w5lm" path="res://Scene/gpu_particles_2d.tscn" id="8_twwsd"]
 [ext_resource type="PackedScene" uid="uid://clckdimdks274" path="res://Scene/crt_tv_shader.tscn" id="10_twwsd"]
 
 [node name="Game" type="Node2D"]
 
-[node name="background" type="Node" parent="."]
+[node name="Background" type="Node" parent="."]
 
-[node name="Parallax2D" type="Parallax2D" parent="background"]
+[node name="Parallax2D" type="Parallax2D" parent="Background"]
 z_index = -10
 scroll_scale = Vector2(0, 0)
 repeat_size = Vector2(640, 0)
 
-[node name="Sprite2D" type="Sprite2D" parent="background/Parallax2D"]
+[node name="Sprite2D" type="Sprite2D" parent="Background/Parallax2D"]
 position = Vector2(320, 20)
 texture = ExtResource("1_thj8p")
 
-[node name="Parallax2D2" type="Parallax2D" parent="background"]
+[node name="Parallax2D2" type="Parallax2D" parent="Background"]
 z_index = -10
 scroll_scale = Vector2(0.1, 0.1)
 repeat_size = Vector2(640, 0)
 
-[node name="Sprite2D" type="Sprite2D" parent="background/Parallax2D2"]
+[node name="Sprite2D" type="Sprite2D" parent="Background/Parallax2D2"]
 position = Vector2(320, 20)
 texture = ExtResource("2_h8jt7")
 
-[node name="Parallax2D3" type="Parallax2D" parent="background"]
+[node name="Parallax2D3" type="Parallax2D" parent="Background"]
 z_index = -10
 scroll_scale = Vector2(0.2, 0.2)
 repeat_size = Vector2(640, 0)
 
-[node name="Sprite2D" type="Sprite2D" parent="background/Parallax2D3"]
+[node name="Sprite2D" type="Sprite2D" parent="Background/Parallax2D3"]
 position = Vector2(320, 20)
 texture = ExtResource("3_8f6ah")
 
-[node name="Parallax2D4" type="Parallax2D" parent="background"]
+[node name="Parallax2D4" type="Parallax2D" parent="Background"]
 z_index = -10
 scroll_scale = Vector2(0.3, 0.3)
 repeat_size = Vector2(640, 0)
 
-[node name="Sprite2D" type="Sprite2D" parent="background/Parallax2D4"]
+[node name="Sprite2D" type="Sprite2D" parent="Background/Parallax2D4"]
 position = Vector2(320, 20)
 texture = ExtResource("4_twwsd")
 
-[node name="Outline_shader" parent="." instance=ExtResource("4_thj8p")]
+[node name="SHADERS" type="Node" parent="."]
+
+[node name="Outline_shader" parent="SHADERS" instance=ExtResource("4_thj8p")]
 position = Vector2(392, 39)
 
-[node name="Desolve_shader" parent="." instance=ExtResource("3_ihreq")]
+[node name="Desolve_shader" parent="SHADERS" instance=ExtResource("3_ihreq")]
 position = Vector2(-439, 31)
 
-[node name="Scanline_shader" parent="." instance=ExtResource("5_h8jt7")]
+[node name="Scanline_shader" parent="SHADERS" instance=ExtResource("5_h8jt7")]
 position = Vector2(1153, 33)
+
+[node name="CRT_TV_shader" parent="SHADERS" instance=ExtResource("10_twwsd")]
+
+[node name="Particles" type="Node" parent="."]
+
+[node name="leaf_particle" parent="Particles" instance=ExtResource("8_twwsd")]
 
 [node name="player" parent="." instance=ExtResource("2_w51g1")]
 position = Vector2(-1048, 49)
 
 [node name="Museum" parent="." instance=ExtResource("1_mhtsl")]
 position = Vector2(-51, 71)
-
-[node name="CRT_TV_shader" parent="." instance=ExtResource("10_twwsd")]
-position = Vector2(92, 203)
