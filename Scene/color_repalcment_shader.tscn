@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://crgvh7b2dlw6j"]
+
+[ext_resource type="Shader" uid="uid://ofcsa7pvlm0i" path="res://Shaders/color_replacment_shader.gdshader" id="1_0oitw"]
+[ext_resource type="Texture2D" uid="uid://dg5tnig1n33mh" path="res://Asset/vechile/v-truck.png" id="2_qejmo"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6k5qh"]
+shader = ExtResource("1_0oitw")
+
+[node name="color_repalcment_shader" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_6k5qh")
+texture = ExtResource("2_qejmo")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(350, 0)
+texture = ExtResource("2_qejmo")

@@ -1,0 +1,86 @@
+[gd_scene load_steps=14 format=3 uid="uid://cwt4i8duwivd6"]
+
+[ext_resource type="Texture2D" uid="uid://sacmwcuygn86" path="res://Asset/models/idle.png" id="1_5xq0d"]
+[ext_resource type="Shader" uid="uid://bhorl4wjsv7li" path="res://Shaders/desolve_shader.gdshader" id="1_at83e"]
+[ext_resource type="Script" uid="uid://dn178353vcuxm" path="res://Script/desolve_activater.gd" id="3_l0blw"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_at83e"]
+frequency = 0.0134
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_l0blw"]
+noise = SubResource("FastNoiseLite_at83e")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_b0wtn"]
+shader = ExtResource("1_at83e")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_l0blw")
+shader_parameter/dissolve_value = 0.0
+shader_parameter/burn_color = Color(1, 0.5, 0, 1)
+shader_parameter/burn_size = 0.05
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_at83e"]
+atlas = ExtResource("1_5xq0d")
+region = Rect2(0, 0, 106, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l0blw"]
+atlas = ExtResource("1_5xq0d")
+region = Rect2(106, 0, 106, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b0wtn"]
+atlas = ExtResource("1_5xq0d")
+region = Rect2(212, 0, 106, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2h05p"]
+atlas = ExtResource("1_5xq0d")
+region = Rect2(318, 0, 106, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_og6k0"]
+atlas = ExtResource("1_5xq0d")
+region = Rect2(424, 0, 106, 22)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_f0ptv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_at83e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l0blw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b0wtn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2h05p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_og6k0")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_at83e"]
+size = Vector2(56.91667, 20)
+
+[node name="Desolve_shader" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_b0wtn")
+position = Vector2(104, -1)
+scale = Vector2(6, 6)
+sprite_frames = SubResource("SpriteFrames_f0ptv")
+autoplay = "default"
+frame = 1
+frame_progress = 0.108085714
+
+[node name="Area2D" type="Area2D" parent="AnimatedSprite2D"]
+script = ExtResource("3_l0blw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/Area2D"]
+position = Vector2(-33.625, 0.25)
+shape = SubResource("RectangleShape2D_at83e")
+
+[connection signal="body_entered" from="AnimatedSprite2D/Area2D" to="AnimatedSprite2D/Area2D" method="_on_body_entered"]
+[connection signal="body_exited" from="AnimatedSprite2D/Area2D" to="AnimatedSprite2D/Area2D" method="_on_body_exited"]

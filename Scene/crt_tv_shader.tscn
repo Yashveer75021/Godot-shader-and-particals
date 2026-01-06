@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://clckdimdks274"]
+
+[ext_resource type="Shader" uid="uid://b7tquo7cdy4hd" path="res://Shaders/crt_tv_shader.gdshader" id="1_4wjyf"]
+[ext_resource type="Script" uid="uid://dwq1ggvrua132" path="res://Scene/crt_tv.gd" id="2_f05sh"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_f05sh"]
+shader = ExtResource("1_4wjyf")
+shader_parameter/curvature = 7.0
+shader_parameter/vignette_multiplier = 1.0350000491625
+shader_parameter/vignette_softness = 3.34000011115
+shader_parameter/scan_line_count = 90.0000019
+shader_parameter/scan_line_opacity = 0.1
+shader_parameter/scan_line_roll_speed = 10.0
+shader_parameter/screen_blur = 0.2
+
+[sub_resource type="QuadMesh" id="QuadMesh_lfdny"]
+size = Vector2(640, 360)
+center_offset = Vector3(320, 180, 0)
+
+[node name="CRT_TV_shader" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_f05sh")
+mesh = SubResource("QuadMesh_lfdny")
+script = ExtResource("2_f05sh")

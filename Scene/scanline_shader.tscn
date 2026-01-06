@@ -1,0 +1,63 @@
+[gd_scene load_steps=10 format=3 uid="uid://r4pms1cu8ffn"]
+
+[ext_resource type="Shader" uid="uid://jgk450yb1202" path="res://Shaders/Scanline_shader.gdshader" id="1_1sk7o"]
+[ext_resource type="Texture2D" uid="uid://bsgv805hgm1x5" path="res://Asset/models/Mudgard.png" id="1_706ff"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1sk7o"]
+shader = ExtResource("1_1sk7o")
+shader_parameter/scanline_count = 41.7450019828875
+shader_parameter/scroll_speed = 5.0
+shader_parameter/opacity = 0.6410000304475
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1sk7o"]
+atlas = ExtResource("1_706ff")
+region = Rect2(0, 0, 82, 23)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0kvg5"]
+atlas = ExtResource("1_706ff")
+region = Rect2(0, 23, 82, 23)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0e0ga"]
+atlas = ExtResource("1_706ff")
+region = Rect2(0, 46, 82, 23)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ysedo"]
+atlas = ExtResource("1_706ff")
+region = Rect2(0, 69, 82, 23)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uyfc3"]
+atlas = ExtResource("1_706ff")
+region = Rect2(0, 92, 82, 23)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_v65cb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1sk7o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0kvg5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0e0ga")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ysedo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uyfc3")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Scanline_shader" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_1sk7o")
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_v65cb")
+autoplay = "default"
+frame = 4
+frame_progress = 0.4502249
