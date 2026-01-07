@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://dtrkjheb2w5lm"]
 
 [ext_resource type="Texture2D" uid="uid://dae062vs372ab" path="res://Asset/background/leaf.png" id="1_em0f5"]
-[ext_resource type="Script" uid="uid://tkk7wg3mmrap" path="res://Scene/leaf_paticle.gd" id="1_tjclp"]
+[ext_resource type="Script" uid="uid://tkk7wg3mmrap" path="res://Script/leaf_paticle.gd" id="1_tjclp"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_em0f5"]
 particles_animation = true
@@ -33,7 +33,7 @@ anim_offset_max = 1.0
 [node name="leaf_particle" type="Node2D"]
 script = ExtResource("1_tjclp")
 
-[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+[node name="GPUParticles-leaf" type="GPUParticles2D" parent="."]
 unique_name_in_owner = true
 material = SubResource("CanvasItemMaterial_em0f5")
 amount = 100
@@ -43,10 +43,10 @@ process_material = SubResource("ParticleProcessMaterial_em0f5")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="CheckButton" type="CheckButton" parent="CanvasLayer"]
-offset_top = 33.0
+[node name="LeafButton" type="CheckButton" parent="CanvasLayer"]
+offset_top = 29.0
 offset_right = 144.0
-offset_bottom = 64.0
+offset_bottom = 60.0
 text = "Leaf Particle"
 
-[connection signal="toggled" from="CanvasLayer/CheckButton" to="." method="_on_check_button_toggled"]
+[connection signal="toggled" from="CanvasLayer/LeafButton" to="." method="_on_check_button_toggled"]

@@ -1,0 +1,32 @@
+[gd_scene load_steps=7 format=3 uid="uid://dfkpxkoeexwy4"]
+
+[ext_resource type="Shader" uid="uid://bv53iapi52lt1" path="res://Shaders/wind_trail_shader.gdshader" id="1_12wqk"]
+[ext_resource type="Texture2D" uid="uid://dae062vs372ab" path="res://Asset/background/leaf.png" id="2_8isdo"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_12wqk"]
+frequency = 0.2
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_8isdo"]
+noise = SubResource("FastNoiseLite_12wqk")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8isdo"]
+shader = ExtResource("1_12wqk")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_8isdo")
+shader_parameter/speed = 2.0
+shader_parameter/wind_color = Color(0.8, 0.9, 1, 1)
+shader_parameter/density = 0.5
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_tensk"]
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(200, 500, 1)
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+gravity = Vector3(0, 0, 0)
+
+[node name="wind_trial_shader" type="Node2D"]
+
+[node name="wind_trail" type="GPUParticles2D" parent="."]
+material = SubResource("ShaderMaterial_8isdo")
+amount = 100
+texture = ExtResource("2_8isdo")
+process_material = SubResource("ParticleProcessMaterial_tensk")

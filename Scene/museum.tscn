@@ -416,6 +416,7 @@ tile_map_data = PackedByteArray("AAAvAAYAAAAKAAIAAAAvAAUAAAAKAAEAAAAvAAQAAAAKAAE
 tile_set = SubResource("TileSet_t45ea")
 
 [node name="water" parent="." instance=ExtResource("2_mwkce")]
+visible = false
 material = SubResource("ShaderMaterial_ki4fe")
 position = Vector2(1932.0005, 161)
 scale = Vector2(7056.001, 268)
